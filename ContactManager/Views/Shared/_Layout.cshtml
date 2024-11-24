@@ -1,0 +1,45 @@
+﻿@* Kenny Hedlund *@
+@* Chapter 4 Contact *@
+@* COP.4813 *@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set the character encoding to UTF-8 -->
+    <meta charset="utf-8" />
+    
+    <!-- Responsive web design for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Dynamic page title from ViewData -->
+    <title>@ViewData["Title"]</title>
+
+    <!-- Bootstrap stylesheet -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <!-- Main container for page -->
+    <div class="container">
+        <main role="main" class="pb-3">
+            <!-- RenderBody is used for injecting content from child page into the master page design -->
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer section -->
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <!-- Added my name to personalize footer and clear empty shite space -->
+            Kenny Hedlund
+        </div>
+    </footer>
+
+    <!-- Include jQuery library, BootStrap library, and JavaScript file -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Render additional scripts if required by dynamic pages -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

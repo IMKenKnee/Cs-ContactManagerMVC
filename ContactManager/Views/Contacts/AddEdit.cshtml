@@ -1,0 +1,66 @@
+﻿@* Kenny Hedlund *@
+@* Chapter 4 Contact *@
+@* COP.4813 *@
+
+<!-- This view uses the Contact model -->
+@model ContactManager.Models.Contact 
+
+<div class="bg-dark text-white text-center py-3">
+    <h1>Contact Manager</h1>
+</div>
+
+<!-- Conditional heading: Use viewbag to dynamically show page heading from addedit.cshtml depending on called action -->
+<h1>@(ViewBag.FormAction == "Add" ? "Add Contact" : "Edit Contact")</h1>
+
+<!-- Display Validation Summary -->
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<!-- Form to handle Add/Edit operation and post -->
+<form asp-action="@ViewBag.FormAction" method="post">
+    <!-- Single line implementation to show validation errors for whole form -->
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <!-- Labels for input fields -->
+    <!-- Read Input for fields -->
+    <div class="form-group">
+        <label asp-for="FirstName"></label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="LastName"></label>
+        <input asp-for="LastName" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phone"></label>
+        <input asp-for="Phone" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <!-- Dropdown menu for selecting category type -> also serves as basic validation -->
+    <div class="form-group">
+        <label asp-for="CategoryId">Category</label>
+        <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Organization"></label>
+        <input asp-for="Organization" class="form-control" />
+    </div>
+
+    <!-- Hidden field for ContactId to preserve ID for Edit -->
+    <input type="hidden" asp-for="ContactId" />
+
+    <!-- Submit button to save the form -->
+    <button type="submit" class="btn btn-primary">Save</button>
+    <!-- Cancel button redirects to Index page -->
+    <a asp-controller="Home" asp-action="Index" 
+        class="btn btn-secondary">Cancel</a>
+</form>

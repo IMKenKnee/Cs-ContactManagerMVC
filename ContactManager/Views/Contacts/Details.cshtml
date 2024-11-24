@@ -1,0 +1,52 @@
+﻿@* Kenny Hedlund *@
+@* Chapter 4 Contact *@
+@* COP.4813 *@
+
+<!-- This view uses the Contact model -->
+@model ContactManager.Models.Contact 
+
+<div class="bg-dark text-white text-center py-3">
+     <h1>Contact Manager</h1>
+</div>
+
+<!-- h1 title for page -->
+<h1>Contact Details</h1>
+
+<!-- Table to display contact details -->
+<!-- th attribute -->
+<!-- td model controls for information -->
+<table class="table table-striped"> <!-- Uses Bootstrap's striped table styling for visual clarity and continuity -->
+    <tr>
+        <th>First Name</th>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td>@Model.LastName</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Phone</th>
+        <td>@Model.Phone</td>
+    </tr>
+    <tr>
+        <th>Organization</th>
+        <td>@Model.Organization</td>
+    </tr>
+    <tr>
+        <th>Category</th>
+        <td>@Model.Category.Name</td>
+    </tr>
+    <tr>
+        <th>Time Added:</th>
+        <td>@Model.DateAdded</td> <!-- Contact's DateAdded formatted from model -->
+    </tr>
+</table>
+
+<!-- Buttons with consisten styling -->
+<a asp-action="Edit" asp-route-id="@Model.ContactId" class="btn btn-secondary">Edit</a>
+<a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Home</a>
+<a asp-action="Delete" asp-route-id="@Model.ContactId" class="btn btn-danger">Delete</a>

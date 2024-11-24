@@ -1,0 +1,51 @@
+﻿@* Kenny Hedlund *@
+@* Chapter 4 Contact  *@
+@* COP.4813 *@
+
+@model IEnumerable<ContactManager.Models.Contact>
+
+<!-- Header section with dark background and white text for the Contact Manager -> all cshtml pages -->
+<div class="bg-dark text-white text-center py-3">
+    <h1>Contact Manager</h1>
+</div>
+
+<!-- Button Navigation to AddEdit.cshtml -->
+<a asp-controller="Contacts" asp-action="Add" class="btn btn-primary">Add New Contact</a>
+
+<!-- Table to display the list of contacts -->
+<table class="table table-striped"> <!-- Uses Bootstrap's striped table styling for visual clarity -->
+    <thead>
+        <tr>
+            <th>Name</th> <!-- Column for contact names -->
+            <th>Phone</th> <!-- Column for contact phone number -->
+            <th>Email</th> <!-- Column for contact email -->
+            <th>Category</th> <!-- Column for contact Category -->
+            <th>Organization</th> <!-- Column for contact organization -->
+            <th>Actions</th> <!-- Column for contact buttons -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model) 
+        @* Loop through each contact *@
+        {
+            <tr>
+                <!-- Display full names as links to their Details page -->
+                <td><a asp-controller="Contacts" asp-action="Details" asp-route-id="@contact.ContactId" class="text-primary">@contact.FirstName @contact.LastName</a></td>
+                <!-- Display contact's phone number -->
+                <td>@contact.Phone</td>
+                <!-- Display contact's email -->
+                <td>@contact.Email</td>
+                <!-- Display contact's Category type -->
+                <td>@contact.Category.Name</td>
+                <!-- Display contact's Organization -->
+                <td>@contact.Organization</td>
+                <td>
+                    <!-- Action buttons for Edit with secondary trait for color -->
+                    <a asp-controller="Contacts" asp-action="Edit" asp-route-id="@contact.ContactId" class="btn btn-secondary">Edit</a>
+                    <!-- Action buttons for Edit with Danger trait for color and visual clarity -->
+                    <a asp-controller="Contacts" asp-action="Delete" asp-route-id="@contact.ContactId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

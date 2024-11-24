@@ -1,0 +1,30 @@
+﻿@* Kenny Hedlund *@
+@* Chapter 4 Contact *@
+@* COP.4813 *@
+
+<!-- This view uses the Contact model -->
+@model ContactManager.Models.Contact 
+
+<div class="bg-dark text-white text-center py-3">
+    <h1>Contact Manager</h1>
+</div>
+
+<h1>Delete Contact</h1>
+<p>Are you sure you want to delete this contact?</p>
+
+<table class="table">
+    <tr>
+        <th>First Name</th>
+        <td>@Model.FirstName</td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td>@Model.LastName</td>
+    </tr>
+</table>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="ContactId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
